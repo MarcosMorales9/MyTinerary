@@ -13,9 +13,7 @@ export default function App() {
   return (
     <React.Fragment>
     <Provider store={reduxStore}>
-      <NavigationContainer>
         <MyTabs/>
-      </NavigationContainer>
      </Provider>
     </React.Fragment>
   );

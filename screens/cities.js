@@ -1,20 +1,43 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, TextInput, ScrollView, View, Dimensions, Text } from 'react-native'
 import * as React from 'react'
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux"
+import citiesActions from '../redux/actions/citiesActions';
+import CardCities from '../components/CardCities';
 
-export default function CitiesScreen() {
+export default function CitiesScreen({navigation}) {
+
+    const [input, setInput] = useState("")
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(citiesActions.filterCities(input))
+    }, [input])
+
+    const city = useSelector((store) => store.citiesReducer.filterCity)
+
+    // console.log(city);
+
+    let ScreenHeight = Dimensions.get("window").height
     return (
-      <View style={styles.container}>
-        <Text>Cities</Text>
-      </View>
+        <ScrollView>
+            <View style={styles.card}>
+            <TextInput  onChangeText={text => setInput(text)} placeholder="Search City..." />
+            {city.length > 0 ?  city.map(city => <CardCities  city={city}  navigation={navigation} key={city._id}/>) 
+                                    : 
+            <Text style={{height:ScreenHeight}}>No results</Text>}
+            </View>
+        </ScrollView>
     )
-  }
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: 'brown',
-      alignItems: 'center',
-     padding: 30
+}
+let ScreenHeight = Dimensions.get("window").height
+const styles = StyleSheet.create({
+    card: {
+        flex: 1,
+        alignItems: 'center',
+        textAlign: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#6495ed',
+        minHeight:ScreenHeight,
     },
-  });
-  
+});

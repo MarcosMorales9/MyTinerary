@@ -24,7 +24,7 @@ export default function HomeScreen(props) {
             textAlign: "center",
           }}
           >
-          Welcome To My Tineraryy
+          Welcome To My Tinerary
         </Text>
 
           <View
@@ -34,7 +34,7 @@ export default function HomeScreen(props) {
             marginRight:"auto",
             borderWidth:2,
             width:300,
-            borderColor:"red",
+            borderColor:"#fd9233",
             flexDirection:"row",
             justifyContent:"center",
             alignItems:"center",
@@ -45,7 +45,7 @@ export default function HomeScreen(props) {
               fontSize:20
             }}
             >
-              MyTinerarys
+              MyTinerary
             </Text>
           <Image 
           source={{
@@ -57,7 +57,7 @@ export default function HomeScreen(props) {
           </View>
         <Text
           style={{marginTop: 20,color: "white",fontSize: 18,textAlign: "center",
-          marginLeft: "auto",marginRight: "auto",
+          marginLeft: "auto",marginRight: "auto",textShadowColor:"black", 
         }}
         >
           Find your perfect trip, designed by insiders who know and love their cities!
@@ -70,12 +70,13 @@ export default function HomeScreen(props) {
             accessibilityLabel="Learn more about this purple button"
             style={{alignItems:"center",justifyContent:"center",marginTop:30, backgroundColor:"orange",width:100,height:50,borderRadius:20,marginLeft:"auto",marginRight:"auto"}}
             >
-            <Text style={{color:"black",backgroundColor:"orange"}}>Cities</Text>
+            <Text style={{color:"black"}}>Cities</Text>
         </TouchableOpacity>
 
 
         </ImageBackground>
       </View>
+
         <Carrousel/>
           </ScrollView>
     )
